@@ -8,3 +8,7 @@ This repository is for learning React. Thanks to Jonas (https://codingheroes.io/
 ## 03_eat-and-split
 - If you want to control the visibility of an element, control it from its parent element, not inside of it.
   - When the element hidden, we hope values in it could be reset. Easy to implement through state from its parent.
+
+## 05_React-Quiz
+- Using useReducer to control the complex states.
+- Combining useReducer and createContext to manage states effectively.
