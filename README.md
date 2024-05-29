@@ -15,3 +15,4 @@ This repository is for learning React. Thanks to Jonas (https://codingheroes.io/
 
 ## 06_WorldWide
 - Using React Router to implement SPA(Singl-Page-Application).
+- Operations on the map, display cities and countries from local data.

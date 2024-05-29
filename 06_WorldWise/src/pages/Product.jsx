@@ -7,7 +7,7 @@ function Product() {
     <div className={styles.product}>
       <PageNav />
       <section>
-        <img src="/public/img-2.jpg" alt="pricing" />
+        <img src="/public/img-1.jpg" alt="pricing" />
         <div>
           <h2>About WorldWide.</h2>
           <p>
