@@ -15,7 +15,7 @@ import Spinner from "./Spinner";
 function Map() {
   const [searchParams] = useSearchParams();
   const [mapPosition, setMapPosition] = useState([40, 0]);
-  const { cities, isLoading } = useCities();
+  const { cities, isListLoading } = useCities();
   const lat = searchParams.get("lat");
   const lng = searchParams.get("lng");
 
@@ -30,7 +30,7 @@ function Map() {
     <div className={styles.mapContainer}>
       <MapContainer
         center={mapPosition}
-        zoom={7}
+        zoom={5}
         scrollWheelZoom={true}
         className={styles.map}
       >
@@ -38,7 +38,7 @@ function Map() {
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png"
         />
-        {isLoading ? (
+        {isListLoading ? (
           <Spinner />
         ) : (
           cities.map((city) => (

@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
+import { useCities } from "../../contexts/CitiesContext";
 // other components and styles
 import styles from "./Form.module.css";
 import DatePicker from "react-datepicker";
@@ -8,7 +9,6 @@ import BackButton from "../BackButton";
 import Message from "./Message";
 import Spinner from "./Spinner";
 import "react-datepicker/dist/react-datepicker.css";
-import { useCities } from "../../contexts/CitiesContext";
 
 function Form() {
   const [cityName, setCityName] = useState("");
@@ -21,7 +21,7 @@ function Form() {
   const [isLoadingGeo, setIsLoadingGeo] = useState(true);
   const lat = searchParams.get("lat");
   const lng = searchParams.get("lng");
-  const { createCity, cities } = useCities();
+  const { createCity, isCityLoading } = useCities();
   const navigate = useNavigate();
 
   function handleAdd(e) {
@@ -34,10 +34,9 @@ function Form() {
       date,
       notes: note,
       position: { lat, lng },
-      id: Date.now(),
     };
     createCity(newCity);
-    setTimeout(() => navigate('/app/cities'), 1000);
+    if (!isCityLoading) navigate("/app/cities");
   }
 
   useEffect(
@@ -63,7 +62,7 @@ function Form() {
     [lat, lng]
   );
 
-  if (isLoadingGeo) return <Spinner />;
+  if (isLoadingGeo || isCityLoading) return <Spinner />;
   if (!cityName || geocodingError)
     return (
       <Message
