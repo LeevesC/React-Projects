@@ -2,8 +2,11 @@
 import { Link } from "react-router-dom";
 import PageNav from "../components/PageNav";
 import styles from "./Homepage.module.css";
+import { useUser } from "../contexts/UserContext";
 
 function HomePage() {
+  const { isLogin } = useUser();
+
   return (
     <>
       <div className={styles.homepage}>
@@ -19,7 +22,9 @@ function HomePage() {
             of. Never forget your wonderful experiences, and show your friends
             how you have wandered the world.
           </h2>
-          <Link to='/app/cities' className="cta">Start tracking now</Link>
+          <Link to={isLogin ? "/app/cities" : "/login"} className="cta">
+            Start tracking now
+          </Link>
         </section>
       </div>
     </>

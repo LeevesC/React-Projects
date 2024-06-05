@@ -18,9 +18,9 @@ function Form() {
   const [note, setNote] = useState("");
   const [geocodingError, setGeocodingError] = useState("");
   const [searchParams] = useSearchParams();
-  const [isLoadingGeo, setIsLoadingGeo] = useState(true);
   const lat = searchParams.get("lat");
   const lng = searchParams.get("lng");
+  const [isLoadingGeo, setIsLoadingGeo] = useState(true);
   const { createCity, isCityLoading } = useCities();
   const navigate = useNavigate();
 
