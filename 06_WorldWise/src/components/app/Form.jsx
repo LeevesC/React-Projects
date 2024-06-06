@@ -20,7 +20,7 @@ function Form() {
   const [searchParams] = useSearchParams();
   const lat = searchParams.get("lat");
   const lng = searchParams.get("lng");
-  const [isLoadingGeo, setIsLoadingGeo] = useState(true);
+  const [isLoadingGeo, setIsLoadingGeo] = useState(false);
   const { createCity, isCityLoading } = useCities();
   const navigate = useNavigate();
 
@@ -52,6 +52,7 @@ function Form() {
             setCityName(data.city);
             setEmoji(convertToEmoji(data.countryCode));
             setCountry(data.countryName);
+            setIsLoadingGeo(false);
           });
       } catch (error) {
         setGeocodingError(error);

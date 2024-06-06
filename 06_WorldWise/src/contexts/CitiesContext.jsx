@@ -5,8 +5,8 @@ const CitiesContext = createContext();
 // context element
 function CitiesProvider({ children }) {
   const [cities, setCities] = useState([]);
-  const [isListLoading, setIsListLoading] = useState(true);
-  const [isCityLoading, setIsCityLoading] = useState(true);
+  const [isListLoading, setIsListLoading] = useState(false);
+  const [isCityLoading, setIsCityLoading] = useState(false);
   const [currentCity, setCurrentCity] = useState({});
 
   useEffect(() => {

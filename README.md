@@ -17,3 +17,4 @@ This repository is for learning React. Thanks to Jonas (https://codingheroes.io/
 - Using React Router to implement SPA(Singl-Page-Application).
 - Operations on the map, display cities and countries from local data.
 - Using useContext to control the authentication, but a issue ocurred on map.
+- Issue above solved, the default setting for Loading state should be 'false'.
