@@ -1,4 +1,8 @@
+import { useMovie } from "../contexts/MovieContext";
+
 function WatchedList({ movie }) {
+  const { deleteWatchedMovie } = useMovie();
+
   return (
     <li>
       <img src={movie.Poster} alt={`${movie.Title} poster`} />
@@ -16,6 +20,12 @@ function WatchedList({ movie }) {
           <span>⏳</span>
           <span>{movie.runtime} min</span>
         </p>
+        <button
+          className="btn-delete"
+          onClick={() => deleteWatchedMovie(movie.imdbID)}
+        >
+          X
+        </button>
       </div>
     </li>
   );

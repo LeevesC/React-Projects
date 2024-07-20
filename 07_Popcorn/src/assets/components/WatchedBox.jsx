@@ -4,9 +4,8 @@ import WatchedList from "./WatchedList";
 function WatchedBox() {
   const { watched, isOpenWatched, setIsOpenWatched } = useMovie();
   
-  const avgImdbRating = average(watched.map((movie) => movie.imdbRating));
-  const avgUserRating = average(watched.map((movie) => movie.userRating));
-  const avgRuntime = average(watched.map((movie) => movie.runtime));
+  const avgImdbRating = Math.floor(average(watched.map((movie) => movie.imdbRating))*10)/10;
+  const avgRuntime = Math.floor(average(watched.map((movie) => movie.runtime))*10)/10;
 
   return (
     <>
@@ -28,10 +27,6 @@ function WatchedBox() {
               <p>
                 <span>⭐️</span>
                 <span>{avgImdbRating}</span>
-              </p>
-              <p>
-                <span>🌟</span>
-                <span>{avgUserRating}</span>
               </p>
               <p>
                 <span>⏳</span>

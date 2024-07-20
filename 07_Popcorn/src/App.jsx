@@ -4,15 +4,35 @@ import MovieList from "./assets/components/MovieList";
 import NavBar from "./assets/components/NavBar";
 import WatchedBox from "./assets/components/WatchedBox";
 import MovieDetail from "./assets/components/MovieDetail";
+import { useEffect } from "react";
 
 export default function App() {
   const {
     movies,
-
     isListLoading,
     selectMovieId,
     fetchError,
+    setSelectMovieId,
+    setQuery,
   } = useMovie();
+
+  useEffect(
+    function () {
+      function escKey(e) {
+        if (e.code === "Escape") {
+          setSelectMovieId(null);
+          console.log("closing");
+        }
+      }
+      document.addEventListener("keydown", escKey);
+
+      return function () {
+        document.removeEventListener("keydown", escKey);
+      };
+    },
+    [setSelectMovieId, setQuery]
+  );
+
   return (
     <>
       <NavBar />

@@ -84,9 +84,14 @@ function MovieProvider({ children }) {
       userRating: userRate,
     };
     // console.log(movieData);
-    tempWatchedData.push(movieData);
+    watched.push(movieData);
     setSelectMovieId(null);
   };
+
+  const deleteWatchedMovie = function (id) {
+    const newWatched = watched.filter((movie)=>movie.imdbID !== id);
+    setWatched(newWatched);
+  }
 
   return (
     <MovieContext.Provider
@@ -111,6 +116,7 @@ function MovieProvider({ children }) {
         userRate,
         setUserRate,
         fetchError,
+        deleteWatchedMovie
       }}
     >
       {children}

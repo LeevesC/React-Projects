@@ -1,4 +1,5 @@
 import { useMovie } from "../contexts/MovieContext";
+import { useEffect } from "react";
 import RatingStar from "./RatingStar";
 
 function MovieDetail() {
@@ -19,6 +20,17 @@ function MovieDetail() {
     if (!userRate) alert("Rate the movie before add to watched list");
     else addWatchedMovie();
   };
+
+  useEffect(
+    function () {
+      document.title = movieInfo ? `Movie | ${movieInfo.Title}` : "Popcorn";
+
+      return function () {
+        document.title = "Popcorn";
+      };
+    },
+    [movieInfo]
+  );
 
   if (isDetailLoading) return <div className="loader-animation"></div>;
   if (!isDetailLoading)

@@ -9,6 +9,7 @@ function MovieList() {
     setIsOpenMovies,
     movies,
   } = useMovie();
+
   return (
     <>
       <button
